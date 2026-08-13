@@ -131,7 +131,7 @@ def Sistema_De_Nota():
     Situacao = []
     situation = ''
 
-    AlunosQuantidade = int(input("Digite a quuantidade de alunos: "))
+    AlunosQuantidade = int(input("Digite a quantidade de alunos: "))
 
     for i in range(AlunosQuantidade):
 
@@ -142,9 +142,11 @@ def Sistema_De_Nota():
         print(f'Nota do {NomeAluno}')
         nota = float(input('> '))
         Notas.append(nota)
+
         if nota >= 7:
             situation = 'Aprovado'
             Situacao.append('Aprovado')
+
         else:
             situation = 'Reprovado'
             Situacao.append('Reprovado')
@@ -153,3 +155,54 @@ def Sistema_De_Nota():
         print(f'{NomeAluno}: {nota:.1f} - {situation}')
 
 
+def estacionamento():
+    '''
+    ate 1 hora = 8 reais
+    de 1 ate 3 horas 15 reais
+    3 horas pra cima é 20 reais
+    '''
+
+    i = True
+    Carros = []
+    total = []
+
+    while i == True:
+
+        print('1 - cadastrar veiculo \n2 - saida de veiculo \n 3 - verificar valores \n 4 - sair')
+        escolha = input('> ')
+
+        if escolha == '1':
+            print("Digite o placa do veiculo")
+            placa = input('> ')
+            Carros.append(placa)
+
+        elif escolha == '2':
+            print('Digite a placa do veiculo')
+            placa = input('> ')
+
+            try:
+                Carros.remove(placa)
+
+            except:
+                print('Carro não cadastrado')
+
+            else:
+                print('quanto tempo esse carro ficou no estacionamento ?(ex: 2)\nSe for menos que 1 hora digite 1')
+                tempo = int(input('> '))
+
+                if tempo == 1:
+                    print('Cliente fico 1 hora ou menos \nValor a pagar R$8,00\n')
+                    total.append(8,00)
+
+                elif tempo > 1 and tempo <= 3:
+                    print(f'Cliente ficou {tempo} horas \nValor a paagr R$15,00')
+                    total.append(15,00)
+
+                elif tempo > 3:
+                    print(f'Cliente ficou {tempo} horas \nValor a paagr R$20,00')
+                    total.append(20,00)
+
+        elif escolha == 3:
+            ValorTotal = sum(total)
+
+            print(f'O total até esse momento é R${ValorTotal:.2}')
