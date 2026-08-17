@@ -168,15 +168,15 @@ def estacionamento():
 
     while i == True:
 
-        print('1 - cadastrar veiculo \n2 - saida de veiculo \n 3 - verificar valores \n 4 - sair')
-        escolha = input('> ')
+        print('1 - cadastrar veiculo \n2 - saida de veiculo \n3 - verificar valores \n4 - sair')
+        escolha = int(input('> '))
 
-        if escolha == '1':
+        if escolha == 1:
             print("Digite o placa do veiculo")
             placa = input('> ')
             Carros.append(placa)
 
-        elif escolha == '2':
+        elif escolha == 2:
             print('Digite a placa do veiculo')
             placa = input('> ')
 
@@ -192,17 +192,93 @@ def estacionamento():
 
                 if tempo == 1:
                     print('Cliente fico 1 hora ou menos \nValor a pagar R$8,00\n')
-                    total.append(8,00)
+                    total.append(8.00)
 
                 elif tempo > 1 and tempo <= 3:
                     print(f'Cliente ficou {tempo} horas \nValor a paagr R$15,00')
-                    total.append(15,00)
+                    total.append(15.00)
 
                 elif tempo > 3:
                     print(f'Cliente ficou {tempo} horas \nValor a paagr R$20,00')
-                    total.append(20,00)
+                    total.append(20.00)
 
         elif escolha == 3:
             ValorTotal = sum(total)
 
-            print(f'O total até esse momento é R${ValorTotal:.2}')
+            print(f'O total até esse momento é R${ValorTotal}')
+
+def SistemaSenha():
+    '''
+    zfill - preencher com uma quantidade de zeroa a esquerda:
+    ord - transforma a letra em numero
+    chr - transforma o numero em letra
+    '''
+
+    letra = 'A'
+    numero = 1
+    ListaDeEspera = []
+
+    while True:
+
+        print('Clinte prioritario ? [Y] - Sim  [N] - Não')
+        resposta = input('>')
+
+        if resposta == 'Y' or resposta == 'y':
+            letra = 'P'
+
+            troca = str(numero)
+            senha = letra + troca
+            print('Senha atual:' + letra + troca.zfill(3) + '\n')
+            input()
+            ListaDeEspera.append(senha)
+            print(ListaDeEspera)
+            numero =+ 1
+
+        elif resposta == 'N' or resposta == 'n':
+
+            letra = 'C'
+            troca = str(numero)
+            senha = letra + troca
+            print('Senha atual:' + letra + troca.zfill(3) + '\n')
+            ListaDeEspera.append(senha)
+            print(ListaDeEspera)
+            numero =+ 1
+            
+
+        else:
+            print('Resposta Invalida')
+        
+
+def SistemaVendas():
+
+    total = 0.0
+    quantidades = 0
+    Vendas = 0
+    while True:
+
+        print('Bem vindo! \nDigite o Codigo do produto, digite 0 para sair:')
+        codigo = int(input('> '))
+
+        if codigo != 0 :
+            print('Qual a quantidade ?')
+            quantidade = int(input('> '))
+
+            quantidades = quantidade + quantidades
+
+            print('Qual é o valor unitario ?')
+            valor = float(input('> '))
+            valor = valor * quantidades
+            total = valor + total
+
+            if valor > Vendas:
+                Vendas = valor
+
+        else:
+            print(f'O total de vendas é: {total} \nQuantidades vendidas: {quantidades} \nVenda mais alta foi uam de: R${Vendas}')
+            break
+
+def Enel():
+    meses = ['Janeiro', 'Fevereiro', 'Março', 'Abril', 'Maio', 'Junho', 'Julho', 'Agosto', 'Setembro', 'Outubro', 'Novembro', 'Dezembro']
+    Valor = []
+
+    
